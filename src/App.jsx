@@ -302,7 +302,7 @@ class App extends Component {
   }
 
   _bindKeyboardShortcut(event) {
-    if (event.metaKey && event.keyCode === 73 /* i */) {
+    if (event.metaKey && event.ctrlKey && event.keyCode === 73 /* i */) {
       this._setMode(AppMode.PICKER);
     }
   }
