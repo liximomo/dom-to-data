@@ -102,7 +102,7 @@ class App extends Component {
     this.state = {
       selectors: [],
       activedAttrId: null,
-      selectedAttrId: [],
+      selectedAttrId: ['innerHTML'],
       attrCustom: {},
       mode: AppMode.MINIMAL,
     };
@@ -141,7 +141,7 @@ class App extends Component {
             name: attr,
             alias: (attrCustom[attr] && attrCustom[attr].alias) || '',
             mapper:
-              (attrCustom[attr] && attrCustom[attr].mapper) || mapperManager.getDefaultMapper(),
+              (attrCustom[attr] && attrCustom[attr].mapper) || mapperManager.getDefaultMapper(attr),
           }));
       }
     );

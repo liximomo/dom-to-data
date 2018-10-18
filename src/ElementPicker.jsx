@@ -141,6 +141,7 @@ class ElementPicker extends PureComponent {
     this._handleSelectorChange = this._handleSelectorChange.bind(this);
     this._handleKeyDown = this._handleKeyDown.bind(this);
     this._handleConfirmSelector = this._handleConfirmSelector.bind(this);
+    this._setConfirmButtonRef = this._setConfirmButtonRef.bind(this);
 
     this._getSvgPaths = composer(
       $state('selector'),
@@ -262,6 +263,10 @@ class ElementPicker extends PureComponent {
     this.context.backToNoramlMode();
   }
 
+  _setConfirmButtonRef(button) {
+    this._btn = button;
+  }
+
   componentDidMount() {
     document.addEventListener('keydown', this._handleKeyDown, false);
     document.addEventListener('mousemove', this._handleMouseMove, false);
@@ -271,6 +276,12 @@ class ElementPicker extends PureComponent {
     this._unmount = true;
     document.removeEventListener('keydown', this._handleKeyDown, false);
     document.removeEventListener('mousemove', this._handleMouseMove, false);
+  }
+
+  componentDidUpdate() {
+    if (this.state.paused && this._getSelector && this._btn) {
+      this._btn.focus();
+    }
   }
 
   render() {
@@ -296,7 +307,7 @@ class ElementPicker extends PureComponent {
               <Block title="选择器">
                 {paused && this._renderSelector(selector)}
                 <div style={{ marginTop: 10 }}>
-                  <Button style={{ margin: 0 }} primary onClick={this._handleConfirmSelector}>
+                  <Button style={{ margin: 0 }} primary onClick={this._handleConfirmSelector} innerRef={this._setConfirmButtonRef} >
                     确认
                   </Button>
                 </div>

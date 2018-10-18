@@ -75,6 +75,7 @@ class AttributeCompositor extends PureComponent {
             <Checker
               checked={selected.indexOf(attr.id) !== -1}
               onClick={() => this._onCheckClick(attr.id)}
+              readOnly
             />
           </CellContaier>
         ))}

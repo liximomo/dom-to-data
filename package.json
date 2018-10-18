@@ -41,7 +41,7 @@
     "style-loader": "0.19.0",
     "styled-components": "^3.2.3",
     "sw-precache-webpack-plugin": "0.11.4",
-    "turndown": "^4.0.1",
+    "turndown": "^5.0.1",
     "turndown-plugin-gfm": "^1.0.1",
     "url-loader": "0.6.2",
     "webpack": "3.8.1",
