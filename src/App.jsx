@@ -72,7 +72,7 @@ function calcAttrs(element, attrs) {
   return attrs[0].mapper.handle(element, attrs[0].name);
 }
 
-function calcResult(elements, attrs, customMapperLookup) {
+function calcResult(elements, attrs) {
   if (elements.length <= 0) return '';
 
   if (attrs.length <= 0) return '';
@@ -166,7 +166,6 @@ class App extends Component {
     this._getResult = composer(
       this._getElements,
       this._getSelectedAttr,
-      shallow($state('attrCustom')),
       calcResult
     );
   }
